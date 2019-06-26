@@ -23,5 +23,6 @@ namespace EstudianteInscripcionProyecto.Entidades
             Balance = 0;
         }
 
+
     }
 }
