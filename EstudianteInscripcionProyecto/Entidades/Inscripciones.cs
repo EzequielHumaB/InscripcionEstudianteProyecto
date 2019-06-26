@@ -13,11 +13,14 @@ namespace EstudianteInscripcionProyecto.Entidades
         public int InscripcionesId { get; set; }
         public DateTime FechaInscripcion { get; set; }
         public decimal Monto { get; set; }
+
+        public List<DetalleInscripciones> DetalleInscripciones { get; set; }
         public Inscripciones()
         {
             this.InscripcionesId = 0;
             FechaInscripcion = DateTime.Now;
             Monto = 0;
+            DetalleInscripciones = new List<DetalleInscripciones>();
         }
 
     }
