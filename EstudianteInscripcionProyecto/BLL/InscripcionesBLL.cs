@@ -45,11 +45,11 @@ namespace EstudianteInscripcionProyecto.BLL
             Contexto contexto = new Contexto(); 
             try
             {
+                var eliminarInscripcion = contexto.Inscripciones.Find(id);
+                contexto.Entry(eliminarInscripcion).State = EntityState.Deleted;
                 foreach(var item in inscripciones.DetalleInscripciones)
                 {
-                   var eliminar = contexto.Estudiantes.Find(item.EstudianteId);
-                   contexto.Entry(eliminar).State = EntityState.Deleted;
-                   contexto.Entry(item).State = EntityState.Deleted;
+                    contexto.Estudiantes.Find(item.EstudianteId).Balance = item.Monto; 
                 }
                
                 paso = contexto.SaveChanges() > 0;
