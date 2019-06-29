@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Linq.Expressions;
 using EstudianteInscripcionProyecto.DAL;
 using System.Data.Entity;
+using EstudianteInscripcionProyecto;
 
 namespace EstudianteInscripcionProyecto.BLL
 {
@@ -31,10 +32,7 @@ namespace EstudianteInscripcionProyecto.BLL
             {
                 throw;
             }
-            finally
-            {
-                _contexto.Dispose();
-            }
+          
             return paso;
         }
 
@@ -51,10 +49,7 @@ namespace EstudianteInscripcionProyecto.BLL
             {
                 throw;
             }
-            finally
-            {
-                _contexto.Dispose();
-            }
+           
             return paso;
         }
 
@@ -70,10 +65,7 @@ namespace EstudianteInscripcionProyecto.BLL
             {
                 throw;
             }
-            finally
-            {
-                _contexto.Dispose();
-            }
+       
             return paso;
         }
 
@@ -87,10 +79,7 @@ namespace EstudianteInscripcionProyecto.BLL
             {
                 throw;
             }
-            finally
-            {
-                _contexto.Dispose();
-            }
+            
             return entity;
         }
 
@@ -116,7 +105,5 @@ namespace EstudianteInscripcionProyecto.BLL
         {
             _contexto.Dispose();
         }
-
-     
     }
 }

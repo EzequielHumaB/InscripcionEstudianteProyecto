@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using EstudianteInscripcionProyecto.UI.Registros;
 
 namespace EstudianteInscripcionProyecto
 {
@@ -15,6 +16,13 @@ namespace EstudianteInscripcionProyecto
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void EstudianteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EstudianteFormulario estudianteFormulario = new EstudianteFormulario();
+            estudianteFormulario.StartPosition = FormStartPosition.CenterScreen;
+            estudianteFormulario.Show();
         }
     }
 }

@@ -15,7 +15,9 @@ namespace EstudianteInscripcionProyecto.DAL
         public DbSet<Inscripciones> Inscripciones { get; set; }
 
         public Contexto() : base("ConStr")
-        {}
+        {
+            Database.SetInitializer<Contexto>(new DropCreateDatabaseIfModelChanges<Contexto>());
+        }
         
     }
 }

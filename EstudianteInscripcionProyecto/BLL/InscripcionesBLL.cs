@@ -7,6 +7,7 @@ using System.Data.Entity;
 using EstudianteInscripcionProyecto.Entidades;
 using EstudianteInscripcionProyecto.DAL;
 using System.Linq.Expressions;
+using System.Runtime.Remoting.Contexts;
 
 namespace EstudianteInscripcionProyecto.BLL
 {
@@ -22,9 +23,8 @@ namespace EstudianteInscripcionProyecto.BLL
                 {
                     foreach(var item in inscripciones.DetalleInscripciones)
                     {
-                        contexto.Estudiantes.Find(item.EstudianteId).Balance += inscripciones.Monto;
+                        contexto.Estudiantes.Find(item.Estudiantes.EstudianteId).Balance = inscripciones.Monto;
                     }
-
                     paso = contexto.SaveChanges() > 0;
                 }
 
@@ -73,6 +73,8 @@ namespace EstudianteInscripcionProyecto.BLL
             Contexto contexto = new Contexto();
             try
             {
+
+          
                 inscripciones = contexto.Inscripciones.Find(id);
                 inscripciones.DetalleInscripciones.Count();
             }catch
@@ -111,10 +113,10 @@ namespace EstudianteInscripcionProyecto.BLL
             try
             {
                 contexto.Entry(inscripciones).State = EntityState.Modified;
-                foreach (var item in inscripciones.DetalleInscripciones)
-                {
-                    contexto.Estudiantes.Find(item.EstudianteId).Balance = inscripciones.Monto;
-                }
+               // foreach (var item in inscripciones.DetalleInscripciones)
+               // {
+                  //  contexto.Estudiantes.Find(item.EstudianteId).Balance = inscripciones.Monto;
+                //}
                 paso = contexto.SaveChanges() > 0;
             }catch
             {
