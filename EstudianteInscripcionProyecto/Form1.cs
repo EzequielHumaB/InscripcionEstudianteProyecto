@@ -24,5 +24,12 @@ namespace EstudianteInscripcionProyecto
             estudianteFormulario.StartPosition = FormStartPosition.CenterScreen;
             estudianteFormulario.Show();
         }
+
+        private void AsignaturasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AsignaturasFormulario asignaturas = new AsignaturasFormulario();
+            asignaturas.StartPosition = FormStartPosition.CenterScreen;
+            asignaturas.Show();
+        }
     }
 }
