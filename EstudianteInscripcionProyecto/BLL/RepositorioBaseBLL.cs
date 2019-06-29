@@ -58,7 +58,6 @@ namespace EstudianteInscripcionProyecto.BLL
             bool paso = false;
             try
             {
-
                 _contexto.Entry(entity).State = EntityState.Modified;
                 paso = _contexto.SaveChanges() > 0;
             }catch

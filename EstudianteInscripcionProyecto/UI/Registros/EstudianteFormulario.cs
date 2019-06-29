@@ -73,17 +73,20 @@ namespace EstudianteInscripcionProyecto.UI.Registros
             estudiantes = LlenarClase();
             if(IdEstudiantenumericUpDown.Value == 0)
             {
-               RepositorioBaseBLL<Estudiantes> repositorioBaseBLL = new RepositorioBaseBLL<Estudiantes>();
-                paso = repositorioBaseBLL.Guardar(estudiantes);
+                // RepositorioBaseBLL<Estudiantes> repositorioBaseBLL = new RepositorioBaseBLL<Estudiantes>();
+                //  paso = repositorioBaseBLL.Guardar(estudiantes);
+                paso = EstudiantesBLL.Guardar(estudiantes);
                 MessageBox.Show("Guardado","Exito", MessageBoxButtons.OK,MessageBoxIcon.Information);
             } else
             {
                 int id = Convert.ToInt32(IdEstudiantenumericUpDown.Value);
-                RepositorioBaseBLL<Estudiantes> repositorioBaseBLL = new RepositorioBaseBLL<Estudiantes>();
-                estudiantes = repositorioBaseBLL.Buscar(id);
+                //   RepositorioBaseBLL<Estudiantes> repositorioBaseBLL = new RepositorioBaseBLL<Estudiantes>();
+                //  estudiantes = repositorioBaseBLL.Buscar(id);
+                estudiantes = EstudiantesBLL.Buscar(id);
                 if(estudiantes!=null)
                 {
-                    paso = repositorioBaseBLL.Modificar(LlenarClase());
+                    // paso = repositorioBaseBLL.Modificar(LlenarClase());
+                    paso = EstudiantesBLL.Modificar(LlenarClase());
                     MessageBox.Show("Modificado","Exito",MessageBoxButtons.OK,MessageBoxIcon.Information);
                 }
                 else
@@ -110,9 +113,11 @@ namespace EstudianteInscripcionProyecto.UI.Registros
             Limpiar();
             try
             {
-                RepositorioBaseBLL<Estudiantes> repositorio = new RepositorioBaseBLL<Estudiantes>();
-                
-                if(repositorio.Eliminar(id))
+                //    RepositorioBaseBLL<Estudiantes> repositorio = new RepositorioBaseBLL<Estudiantes>();
+
+                Estudiantes estudiantes = new Estudiantes();
+                 
+                if(EstudiantesBLL.Eliminar(id))
                 {
                     MessageBox.Show("Eliminado correctamente");
                 }
@@ -134,7 +139,7 @@ namespace EstudianteInscripcionProyecto.UI.Registros
             Limpiar();
             try
             {
-                estudiantes = repositorio.Buscar(id);
+                estudiantes = EstudiantesBLL.Buscar(id);
                 if (estudiantes != null)
                 {
                     MessageBox.Show("Estudiante encontrado");

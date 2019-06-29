@@ -53,6 +53,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\AsignaturasBLL.cs" />
+    <Compile Include="BLL\EstudiantesBLL.cs" />
     <Compile Include="BLL\InscripcionesBLL.cs" />
     <Compile Include="BLL\IInterfazBLL.cs" />
     <Compile Include="BLL\RepositorioBaseBLL.cs" />
@@ -104,6 +106,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Registros\EstudianteFormulario.resx">
       <DependentUpon>EstudianteFormulario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Registros\InscripcionesFormulario.resx">
+      <DependentUpon>InscripcionesFormulario.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

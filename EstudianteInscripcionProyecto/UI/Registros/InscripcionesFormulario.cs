@@ -16,5 +16,10 @@ namespace EstudianteInscripcionProyecto.UI.Registros
         {
             InitializeComponent();
         }
+
+        private void InscripcionesFormulario_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
