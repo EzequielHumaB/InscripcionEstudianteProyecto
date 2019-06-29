@@ -22,5 +22,7 @@ namespace EstudianteInscripcionProyecto.Entidades
             Nombres = string.Empty;
             Balance = 0;
         }
+
+     
     }
 }

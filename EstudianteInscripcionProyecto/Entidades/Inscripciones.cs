@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EstudianteInscripcionProyecto.Entidades
 {
@@ -14,7 +15,9 @@ namespace EstudianteInscripcionProyecto.Entidades
         public DateTime FechaInscripcion { get; set; }
         public decimal Monto { get; set; }
 
-        public List<DetalleInscripciones> DetalleInscripciones { get; set; }
+    
+
+        public virtual List<DetalleInscripciones> DetalleInscripciones { get; set; }
         public Inscripciones()
         {
             this.InscripcionesId = 0;
