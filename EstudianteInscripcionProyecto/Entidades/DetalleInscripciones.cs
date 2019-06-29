@@ -22,6 +22,10 @@ namespace EstudianteInscripcionProyecto.Entidades
         public decimal Balance { get; set; }
 
         
+        public int AsignaturaId { get;  set; }
+
+
+
         public DetalleInscripciones()
         {
             DetalleInscripcionId = 0;
@@ -29,7 +33,7 @@ namespace EstudianteInscripcionProyecto.Entidades
             Monto = 0;
             EstudianteId = 0;
             Estudiantes = new Estudiantes();
-            Balance = 0;
+            Balance = 0;        
         }
 
         public DetalleInscripciones(int InscripcionDetalleId,int IdEstudiante,Estudiantes estudiantes , decimal balance)

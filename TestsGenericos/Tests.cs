@@ -73,9 +73,6 @@ namespace TestsGenericos
             inscripciones.InscripcionesId = 3;
             inscripciones.Monto = 102;
             inscripciones.FechaInscripcion = DateTime.Now;
-
-  
-
             Assert.IsTrue(InscripcionesBLL.Modificar(inscripciones));
         }
     }
