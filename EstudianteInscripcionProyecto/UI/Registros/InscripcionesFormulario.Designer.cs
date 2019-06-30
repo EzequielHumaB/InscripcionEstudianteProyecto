@@ -41,18 +41,17 @@
             this.Nuevobutton = new System.Windows.Forms.Button();
             this.Buscarbutton = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.DetalledataGridView = new System.Windows.Forms.DataGridView();
             this.DetalleIdnumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.EstudianteIdnumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.MyerrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.AgregarAlGridbutton = new System.Windows.Forms.Button();
             this.RemoverAlGrid = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.EstudiantecomboBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.IdnumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MontonumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DetalledataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DetalleIdnumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.EstudianteIdnumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MyerrorProvider)).BeginInit();
             this.SuspendLayout();
             // 
@@ -108,7 +107,7 @@
             // 
             this.Eliminarbutton.Image = ((System.Drawing.Image)(resources.GetObject("Eliminarbutton.Image")));
             this.Eliminarbutton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Eliminarbutton.Location = new System.Drawing.Point(262, 386);
+            this.Eliminarbutton.Location = new System.Drawing.Point(262, 412);
             this.Eliminarbutton.Name = "Eliminarbutton";
             this.Eliminarbutton.Size = new System.Drawing.Size(75, 57);
             this.Eliminarbutton.TabIndex = 34;
@@ -121,7 +120,7 @@
             // 
             this.GuardarButton.Image = ((System.Drawing.Image)(resources.GetObject("GuardarButton.Image")));
             this.GuardarButton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.GuardarButton.Location = new System.Drawing.Point(155, 386);
+            this.GuardarButton.Location = new System.Drawing.Point(155, 412);
             this.GuardarButton.Name = "GuardarButton";
             this.GuardarButton.Size = new System.Drawing.Size(75, 57);
             this.GuardarButton.TabIndex = 33;
@@ -134,7 +133,7 @@
             // 
             this.Nuevobutton.Image = ((System.Drawing.Image)(resources.GetObject("Nuevobutton.Image")));
             this.Nuevobutton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Nuevobutton.Location = new System.Drawing.Point(40, 386);
+            this.Nuevobutton.Location = new System.Drawing.Point(40, 412);
             this.Nuevobutton.Name = "Nuevobutton";
             this.Nuevobutton.Size = new System.Drawing.Size(75, 57);
             this.Nuevobutton.TabIndex = 32;
@@ -165,19 +164,10 @@
             this.label4.TabIndex = 36;
             this.label4.Text = "Detalle Id";
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(35, 161);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(69, 13);
-            this.label5.TabIndex = 37;
-            this.label5.Text = "Estudiante Id";
-            // 
             // DetalledataGridView
             // 
             this.DetalledataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DetalledataGridView.Location = new System.Drawing.Point(38, 187);
+            this.DetalledataGridView.Location = new System.Drawing.Point(38, 225);
             this.DetalledataGridView.Name = "DetalledataGridView";
             this.DetalledataGridView.Size = new System.Drawing.Size(355, 150);
             this.DetalledataGridView.TabIndex = 38;
@@ -189,13 +179,6 @@
             this.DetalleIdnumericUpDown.Size = new System.Drawing.Size(56, 20);
             this.DetalleIdnumericUpDown.TabIndex = 39;
             // 
-            // EstudianteIdnumericUpDown
-            // 
-            this.EstudianteIdnumericUpDown.Location = new System.Drawing.Point(126, 161);
-            this.EstudianteIdnumericUpDown.Name = "EstudianteIdnumericUpDown";
-            this.EstudianteIdnumericUpDown.Size = new System.Drawing.Size(56, 20);
-            this.EstudianteIdnumericUpDown.TabIndex = 40;
-            // 
             // MyerrorProvider
             // 
             this.MyerrorProvider.ContainerControl = this;
@@ -203,7 +186,7 @@
             // AgregarAlGridbutton
             // 
             this.AgregarAlGridbutton.Image = ((System.Drawing.Image)(resources.GetObject("AgregarAlGridbutton.Image")));
-            this.AgregarAlGridbutton.Location = new System.Drawing.Point(307, 150);
+            this.AgregarAlGridbutton.Location = new System.Drawing.Point(307, 185);
             this.AgregarAlGridbutton.Name = "AgregarAlGridbutton";
             this.AgregarAlGridbutton.Size = new System.Drawing.Size(75, 34);
             this.AgregarAlGridbutton.TabIndex = 41;
@@ -212,7 +195,7 @@
             // 
             // RemoverAlGrid
             // 
-            this.RemoverAlGrid.Location = new System.Drawing.Point(38, 355);
+            this.RemoverAlGrid.Location = new System.Drawing.Point(38, 381);
             this.RemoverAlGrid.Name = "RemoverAlGrid";
             this.RemoverAlGrid.Size = new System.Drawing.Size(75, 23);
             this.RemoverAlGrid.TabIndex = 42;
@@ -220,17 +203,34 @@
             this.RemoverAlGrid.UseVisualStyleBackColor = true;
             this.RemoverAlGrid.Click += new System.EventHandler(this.RemoverAlGrid_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(181, 161);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(120, 23);
+            this.button1.TabIndex = 43;
+            this.button1.Text = "Agregar Estudiante";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // EstudiantecomboBox
+            // 
+            this.EstudiantecomboBox.FormattingEnabled = true;
+            this.EstudiantecomboBox.Location = new System.Drawing.Point(38, 161);
+            this.EstudiantecomboBox.Name = "EstudiantecomboBox";
+            this.EstudiantecomboBox.Size = new System.Drawing.Size(121, 21);
+            this.EstudiantecomboBox.TabIndex = 44;
+            // 
             // InscripcionesFormulario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(403, 489);
+            this.Controls.Add(this.EstudiantecomboBox);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.RemoverAlGrid);
             this.Controls.Add(this.AgregarAlGridbutton);
-            this.Controls.Add(this.EstudianteIdnumericUpDown);
             this.Controls.Add(this.DetalleIdnumericUpDown);
             this.Controls.Add(this.DetalledataGridView);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.Buscarbutton);
             this.Controls.Add(this.Eliminarbutton);
@@ -248,7 +248,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.MontonumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DetalledataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DetalleIdnumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.EstudianteIdnumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MyerrorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -268,12 +267,12 @@
         private System.Windows.Forms.Button Nuevobutton;
         private System.Windows.Forms.Button Buscarbutton;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridView DetalledataGridView;
         private System.Windows.Forms.NumericUpDown DetalleIdnumericUpDown;
-        private System.Windows.Forms.NumericUpDown EstudianteIdnumericUpDown;
         private System.Windows.Forms.ErrorProvider MyerrorProvider;
         private System.Windows.Forms.Button RemoverAlGrid;
         private System.Windows.Forms.Button AgregarAlGridbutton;
+        private System.Windows.Forms.ComboBox EstudiantecomboBox;
+        private System.Windows.Forms.Button button1;
     }
 }

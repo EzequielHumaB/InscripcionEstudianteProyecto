@@ -163,7 +163,6 @@ namespace EstudianteInscripcionProyecto.UI.Registros
             if (DetalledataGridView.DataSource != null)
                 this.DetalleInscripciones = (List<DetalleInscripciones>) DetalledataGridView.DataSource;
             
-
             this.DetalleInscripciones.Add(
                 new DetalleInscripciones(
                     InscripcionDetalleId: 0,
