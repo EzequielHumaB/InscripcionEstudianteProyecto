@@ -14,8 +14,9 @@ namespace EstudianteInscripcionProyecto.Entidades
         public int InscripcionesId { get; set; }
         public DateTime FechaInscripcion { get; set; }
         public decimal Monto { get; set; }
+        public int EstudianteId { get; set; }
 
-    
+        public virtual List<Asignaturas> Asignaturas { get; set; }
 
         public virtual List<DetalleInscripciones> DetalleInscripciones { get; set; }
         public Inscripciones()
@@ -23,7 +24,19 @@ namespace EstudianteInscripcionProyecto.Entidades
             this.InscripcionesId = 0;
             FechaInscripcion = DateTime.Now;
             Monto = 0;
+            EstudianteId = 0;
             DetalleInscripciones = new List<DetalleInscripciones>();
+            Asignaturas = new List<Asignaturas>();
+        }
+
+        public void CalcularMonto()
+        {
+            decimal resultado = 0;
+            foreach(var item in DetalleInscripciones)
+            {
+                resultado *= item.MontoDetalle;
+            }
+            Monto = resultado;
         }
 
     }

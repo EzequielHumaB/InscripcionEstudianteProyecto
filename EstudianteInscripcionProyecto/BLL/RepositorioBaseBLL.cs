@@ -10,7 +10,7 @@ using EstudianteInscripcionProyecto;
 
 namespace EstudianteInscripcionProyecto.BLL
 {
-    public class RepositorioBaseBLL<T> : IDisposable, IInterfazBLL<T> where T : class
+    public class RepositorioBaseBLL<T> : IDisposable, IInterfazBLL<T> where T : class 
     {
         internal Contexto _contexto;
 

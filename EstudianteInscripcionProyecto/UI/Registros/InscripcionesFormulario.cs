@@ -17,14 +17,14 @@ namespace EstudianteInscripcionProyecto.UI.Registros
         public List<DetalleInscripciones> DetalleInscripciones;
         public InscripcionesFormulario()
         {
-            DetalleInscripciones = new List<DetalleInscripciones>();
+            this.DetalleInscripciones = new List<DetalleInscripciones>();
             InitializeComponent();
+            LlenarComboBox();
         }
 
         private void Limpiar()
         {
             IdnumericUpDown.Value = 0;
-            EstudianteIdnumericUpDown.Value = 0;
             DetalleIdnumericUpDown.Value = 0;
             MontonumericUpDown.Value = 0;
             FechadateTimePicker.Value = DateTime.Now;
@@ -42,6 +42,7 @@ namespace EstudianteInscripcionProyecto.UI.Registros
             Inscripciones inscripciones = new Inscripciones();
             inscripciones.InscripcionesId = (int)IdnumericUpDown.Value;
             inscripciones.FechaInscripcion = FechadateTimePicker.Value;
+            inscripciones.EstudianteId =Convert.ToInt32(EstudiantecomboBox.SelectedValue);
             inscripciones.Monto = MontonumericUpDown.Value;
             inscripciones.DetalleInscripciones = this.DetalleInscripciones;
             return inscripciones;
@@ -108,7 +109,7 @@ namespace EstudianteInscripcionProyecto.UI.Registros
                 Limpiar();
             }
             else
-                MessageBox.Show("No se pudo guardar!!", "Falló",
+                MessageBox.Show("No se pudo guardar!!", "Fallo",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
@@ -160,16 +161,17 @@ namespace EstudianteInscripcionProyecto.UI.Registros
 
         private void AgregarAlGridbutton_Click(object sender, EventArgs e)
         {
+            Estudiantes estudiantes = new Estudiantes();
             if (DetalledataGridView.DataSource != null)
                 this.DetalleInscripciones = (List<DetalleInscripciones>) DetalledataGridView.DataSource;
             
             this.DetalleInscripciones.Add(
                 new DetalleInscripciones(
-                    InscripcionDetalleId: 0,
-                    IdEstudiante: (int)EstudianteIdnumericUpDown.Value,
-                    balance: MontonumericUpDown.Value,
-                    InscripcionesId:(int)IdnumericUpDown.Value
-                    )
+                 DetalleInscripcionId:0,
+                 EstudianteId: (int)EstudiantecomboBox.SelectedValue,
+                 MontoDetalle: (int)MontonumericUpDown.Value,
+                 Asignatura:1
+                 )
                );
             CargarGrid();
             DetalledataGridView.Focus();
@@ -183,6 +185,23 @@ namespace EstudianteInscripcionProyecto.UI.Registros
                 DetalleInscripciones.RemoveAt(DetalledataGridView.CurrentRow.Index);
                 CargarGrid();
             }
+        }
+
+        private void EstudianteButton_Click(object sender, EventArgs e)
+        {
+            EstudianteFormulario estudianteFormulario = new EstudianteFormulario();
+            estudianteFormulario.StartPosition = FormStartPosition.CenterScreen;
+            estudianteFormulario.ShowDialog();
+        }
+
+        private void LlenarComboBox()
+        {
+            RepositorioBaseBLL<Estudiantes> repositorioBaseBLL = new RepositorioBaseBLL<Estudiantes>();
+            var listado = new List<Estudiantes>();
+            listado = repositorioBaseBLL.GetList(p => true);
+            EstudiantecomboBox.DataSource = listado;
+            EstudiantecomboBox.DisplayMember = "Nombres";
+            EstudiantecomboBox.ValueMember = "EstudianteId";
         }
     }
 }

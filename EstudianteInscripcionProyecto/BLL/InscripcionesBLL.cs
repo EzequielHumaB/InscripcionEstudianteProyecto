@@ -16,23 +16,25 @@ namespace EstudianteInscripcionProyecto.BLL
         public static bool Guardar(Inscripciones inscripciones)
         {
             bool paso = false;
+            Estudiantes estudiantes = new Estudiantes();
+            RepositorioBaseBLL<Estudiantes> repositorioBaseBLL = new RepositorioBaseBLL<Estudiantes>();
             Contexto contexto = new Contexto();
             try
-            {
+            {     
                 if(contexto.Inscripciones.Add(inscripciones)!=null)
                 {
-                    foreach(var item in inscripciones.DetalleInscripciones)
-                    {
-                        contexto.Estudiantes.Find(item.Estudiantes.EstudianteId).Balance = item.Monto;
-                    }
+                //    var buscarEstudiante = repositorioBaseBLL.Buscar(inscripciones.EstudianteId);
+                  //  inscripciones.CalcularMonto();
+                  //  estudiantes.Balance = inscripciones.Monto;
                     paso = contexto.SaveChanges() > 0;
+                    //repositorioBaseBLL.Modificar(buscarEstudiante);
                 }
 
-            }catch
+          }catch
             {
                 throw;
-            }
-            finally
+           }
+           finally
             {
                 contexto.Dispose();
             }
@@ -46,14 +48,12 @@ namespace EstudianteInscripcionProyecto.BLL
             Contexto contexto = new Contexto(); 
             try
             {
-                var eliminarInscripcion = contexto.Inscripciones.Find(id);
-                contexto.Entry(eliminarInscripcion).State = EntityState.Deleted;
-
-              
-                foreach(var item in inscripciones.DetalleInscripciones)
-                {
-                    contexto.Estudiantes.Find(item.EstudianteId).Balance = inscripciones.Monto; 
-                }
+                var Inscripcion = contexto.Inscripciones.Find(id);
+                var estudiante = E.Buscar(Inscripcion.EstudianteId);
+                estudiante.Balance = estudiante.Balance - Inscripcion.MontoInscripcion;
+                Est.Modificar(estudiante);
+                db.Entry(Inscripcion).State = EntityState.Deleted;
+             
 
                 paso = contexto.SaveChanges() > 0;
             }catch
@@ -73,12 +73,8 @@ namespace EstudianteInscripcionProyecto.BLL
             Contexto contexto = new Contexto();
             try
             {
-                inscripciones = contexto.Inscripciones.Find(id);
-                if(inscripciones!=null)
-                {
-                    inscripciones.DetalleInscripciones.Count();
-                }
-                
+                inscripciones = contexto.Inscripciones.Find(id);  
+                inscripciones.DetalleInscripciones.Count();
             }catch
             {
                 throw;
@@ -110,16 +106,37 @@ namespace EstudianteInscripcionProyecto.BLL
 
         public static bool Modificar(Inscripciones inscripciones)
         {
-            bool paso = false;
-            Contexto contexto = new Contexto();
-            try
-            {
+           bool paso = false;
+           Contexto contexto = new Contexto();
+           RepositorioBaseBLL<Estudiantes> repositorioBaseBLL = new RepositorioBaseBLL<Estudiantes>();
+           try
+           {
+              var estudiante = repositorioBaseBLL.Buscar(inscripciones.EstudianteId);
+              var anterior = new RepositorioBaseBLL<Inscripciones>().Buscar(inscripciones.InscripcionesId);
+              estudiante.Balance = anterior.Monto;
+              foreach(var item in anterior.DetalleInscripciones)
+              {
+                  if(!inscripciones.DetalleInscripciones.Any(A =>A.DetalleInscripcionId == item.DetalleInscripcionId))
+                  {
+                      contexto.Entry(item).State = EntityState.Deleted;
+                  }
+              }
+              foreach (var item in inscripciones.DetalleInscripciones)
+              {
+                 if(item.DetalleInscripcionId==0)
+              {
+                 contexto.Entry(item).State = EntityState.Added;
+              }
+                    else
+                    {
+                        contexto.Entry(item).State = EntityState.Modified;
+                    }
+                    
+                }
                 contexto.Entry(inscripciones).State = EntityState.Modified;
-               // foreach (var item in inscripciones.DetalleInscripciones)
-               // {
-                  //  contexto.Estudiantes.Find(item.EstudianteId).Balance = inscripciones.Monto;
-                //}
                 paso = contexto.SaveChanges() > 0;
+
+
             }catch
             {
                 throw;

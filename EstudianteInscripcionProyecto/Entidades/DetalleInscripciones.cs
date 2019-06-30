@@ -10,36 +10,33 @@ namespace EstudianteInscripcionProyecto.Entidades
 {
     public class DetalleInscripciones
     {
+
         [Key]
         public int DetalleInscripcionId { get; set; }
         public int InscripcionId { get; set; }
-        public decimal Monto { get; set; }
+        public decimal MontoDetalle { get; set; }
 
         public int EstudianteId { get; set; }
 
-        [ForeignKey("EstudianteId")]
-        public virtual Estudiantes Estudiantes {get;set;}
         public decimal Balance { get; set; }
         public int AsignaturaId { get;  set; }
 
-
+      
 
         public DetalleInscripciones()
         {
             DetalleInscripcionId = 0;
-            InscripcionId = 0;
-            Monto = 0;
             EstudianteId = 0;
-            Estudiantes = new Estudiantes();
-            Balance = 0;        
+            MontoDetalle = 0;
+            AsignaturaId = 0;
         }
 
-        public DetalleInscripciones(int InscripcionDetalleId,int IdEstudiante,int InscripcionesId , decimal balance)
+        public DetalleInscripciones(int DetalleInscripcionId, int EstudianteId, decimal MontoDetalle, int Asignatura )
         {
-            DetalleInscripcionId = InscripcionDetalleId;
-            EstudianteId = IdEstudiante;
-            InscripcionId = InscripcionesId;
-            Balance = balance;
+            this.DetalleInscripcionId = DetalleInscripcionId;
+            this.EstudianteId = EstudianteId;
+            this.MontoDetalle = MontoDetalle;
+            AsignaturaId = Asignatura;
         }
     }
 }

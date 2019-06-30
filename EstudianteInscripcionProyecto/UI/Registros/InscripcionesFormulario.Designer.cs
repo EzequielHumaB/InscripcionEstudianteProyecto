@@ -107,7 +107,7 @@
             // 
             this.Eliminarbutton.Image = ((System.Drawing.Image)(resources.GetObject("Eliminarbutton.Image")));
             this.Eliminarbutton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Eliminarbutton.Location = new System.Drawing.Point(262, 412);
+            this.Eliminarbutton.Location = new System.Drawing.Point(262, 432);
             this.Eliminarbutton.Name = "Eliminarbutton";
             this.Eliminarbutton.Size = new System.Drawing.Size(75, 57);
             this.Eliminarbutton.TabIndex = 34;
@@ -120,7 +120,7 @@
             // 
             this.GuardarButton.Image = ((System.Drawing.Image)(resources.GetObject("GuardarButton.Image")));
             this.GuardarButton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.GuardarButton.Location = new System.Drawing.Point(155, 412);
+            this.GuardarButton.Location = new System.Drawing.Point(155, 432);
             this.GuardarButton.Name = "GuardarButton";
             this.GuardarButton.Size = new System.Drawing.Size(75, 57);
             this.GuardarButton.TabIndex = 33;
@@ -133,7 +133,7 @@
             // 
             this.Nuevobutton.Image = ((System.Drawing.Image)(resources.GetObject("Nuevobutton.Image")));
             this.Nuevobutton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Nuevobutton.Location = new System.Drawing.Point(40, 412);
+            this.Nuevobutton.Location = new System.Drawing.Point(40, 432);
             this.Nuevobutton.Name = "Nuevobutton";
             this.Nuevobutton.Size = new System.Drawing.Size(75, 57);
             this.Nuevobutton.TabIndex = 32;
@@ -167,7 +167,7 @@
             // DetalledataGridView
             // 
             this.DetalledataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DetalledataGridView.Location = new System.Drawing.Point(38, 225);
+            this.DetalledataGridView.Location = new System.Drawing.Point(40, 247);
             this.DetalledataGridView.Name = "DetalledataGridView";
             this.DetalledataGridView.Size = new System.Drawing.Size(355, 150);
             this.DetalledataGridView.TabIndex = 38;
@@ -186,7 +186,7 @@
             // AgregarAlGridbutton
             // 
             this.AgregarAlGridbutton.Image = ((System.Drawing.Image)(resources.GetObject("AgregarAlGridbutton.Image")));
-            this.AgregarAlGridbutton.Location = new System.Drawing.Point(307, 185);
+            this.AgregarAlGridbutton.Location = new System.Drawing.Point(316, 207);
             this.AgregarAlGridbutton.Name = "AgregarAlGridbutton";
             this.AgregarAlGridbutton.Size = new System.Drawing.Size(75, 34);
             this.AgregarAlGridbutton.TabIndex = 41;
@@ -195,7 +195,7 @@
             // 
             // RemoverAlGrid
             // 
-            this.RemoverAlGrid.Location = new System.Drawing.Point(38, 381);
+            this.RemoverAlGrid.Location = new System.Drawing.Point(38, 403);
             this.RemoverAlGrid.Name = "RemoverAlGrid";
             this.RemoverAlGrid.Size = new System.Drawing.Size(75, 23);
             this.RemoverAlGrid.TabIndex = 42;
@@ -211,6 +211,7 @@
             this.button1.TabIndex = 43;
             this.button1.Text = "Agregar Estudiante";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.EstudianteButton_Click);
             // 
             // EstudiantecomboBox
             // 
@@ -224,7 +225,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(403, 489);
+            this.ClientSize = new System.Drawing.Size(403, 521);
             this.Controls.Add(this.EstudiantecomboBox);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.RemoverAlGrid);

@@ -20,6 +20,7 @@ namespace EstudianteInscripcionProyecto.BLL
             {
                 if(contexto.Estudiantes.Add(estudiantes)!=null)
                 {
+
                     paso = contexto.SaveChanges() > 0;
                 }
 
