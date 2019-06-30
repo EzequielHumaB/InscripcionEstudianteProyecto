@@ -12,7 +12,6 @@ namespace EstudianteInscripcionProyecto.BLL
         List<T> GetList(Expression<Func<T, bool>> expression);
         T Buscar(int id);
         bool Guardar(T entity);
-
         bool Eliminar(int id);
         bool Modificar(T entity);
     }

@@ -77,6 +77,7 @@ namespace EstudianteInscripcionProyecto.UI.Registros
         private void GuardarButton_Click(object sender, EventArgs e)
         {
             bool paso = false;
+            RepositorioBaseBLL<Asignaturas> repositorio = new RepositorioBaseBLL<Asignaturas>();
             Asignaturas asignaturas = new Asignaturas();
             if (!Validar())
             {
@@ -86,23 +87,19 @@ namespace EstudianteInscripcionProyecto.UI.Registros
             asignaturas = LlenarClase();
             if (IdnumericUpDown.Value == 0)
             {
-                RepositorioBaseBLL<Asignaturas> repositorioBaseBLL = new RepositorioBaseBLL<Asignaturas>();
-                paso = repositorioBaseBLL.Guardar(asignaturas);
+                paso = repositorio.Guardar(asignaturas);
                 MessageBox.Show("Guardado", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                int id = Convert.ToInt32(IdnumericUpDown.Value);
-                RepositorioBaseBLL<Asignaturas> repositorioBaseBLL = new RepositorioBaseBLL<Asignaturas>();
-                asignaturas = repositorioBaseBLL.Buscar(id);
-                if (asignaturas != null)
+                if(!ExisteEnLaBaseDeDatos())
                 {
-                    paso = repositorioBaseBLL.Modificar(LlenarClase());
-                    MessageBox.Show("Modificado", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("No se puede modificar a alguien que no existe");
                 }
                 else
                 {
-                    MessageBox.Show("Id no existe", "Fracaso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    paso = repositorio.Modificar(asignaturas);
+                    MessageBox.Show("Modificado","Exito",MessageBoxButtons.OK,MessageBoxIcon.Information);
                 }
 
             }
@@ -123,8 +120,8 @@ namespace EstudianteInscripcionProyecto.UI.Registros
             id = (int)IdnumericUpDown.Value;
             try
             {
-                RepositorioBaseBLL<Asignaturas> repositorioBaseBLL = new RepositorioBaseBLL<Asignaturas>();
-                if(repositorioBaseBLL.Eliminar(id))
+                
+                if(AsignaturasBLL.Eliminar(id))
                 {
                     MessageBox.Show("Eliminado con existo");
                     Limpiar();
@@ -143,8 +140,7 @@ namespace EstudianteInscripcionProyecto.UI.Registros
             Asignaturas asignaturas = new Asignaturas();
             try
             {
-                RepositorioBaseBLL<Asignaturas> repositorioBaseBLL = new RepositorioBaseBLL<Asignaturas>();
-                asignaturas = repositorioBaseBLL.Buscar(id);
+                asignaturas = AsignaturasBLL.Buscar(id);
                 if(asignaturas!=null)
                 {
                     MessageBox.Show("Asignatura encontrada");

@@ -31,5 +31,12 @@ namespace EstudianteInscripcionProyecto
             asignaturas.StartPosition = FormStartPosition.CenterScreen;
             asignaturas.Show();
         }
+
+        private void InscripcionesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InscripcionesFormulario inscripcionesFormulario = new InscripcionesFormulario();
+            inscripcionesFormulario.StartPosition = FormStartPosition.CenterScreen;
+            inscripcionesFormulario.Show();
+        }
     }
 }

@@ -20,8 +20,6 @@ namespace EstudianteInscripcionProyecto.Entidades
         [ForeignKey("EstudianteId")]
         public virtual Estudiantes Estudiantes {get;set;}
         public decimal Balance { get; set; }
-
-        
         public int AsignaturaId { get;  set; }
 
 
@@ -36,11 +34,11 @@ namespace EstudianteInscripcionProyecto.Entidades
             Balance = 0;        
         }
 
-        public DetalleInscripciones(int InscripcionDetalleId,int IdEstudiante,Estudiantes estudiantes , decimal balance)
+        public DetalleInscripciones(int InscripcionDetalleId,int IdEstudiante,int InscripcionesId , decimal balance)
         {
             DetalleInscripcionId = InscripcionDetalleId;
             EstudianteId = IdEstudiante;
-            Estudiantes = estudiantes;
+            InscripcionId = InscripcionesId;
             Balance = balance;
         }
     }

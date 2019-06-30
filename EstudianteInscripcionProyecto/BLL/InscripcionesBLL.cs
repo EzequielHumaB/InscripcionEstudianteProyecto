@@ -23,7 +23,7 @@ namespace EstudianteInscripcionProyecto.BLL
                 {
                     foreach(var item in inscripciones.DetalleInscripciones)
                     {
-                        contexto.Estudiantes.Find(item.Estudiantes.EstudianteId).Balance = inscripciones.Monto;
+                        contexto.Estudiantes.Find(item.Estudiantes.EstudianteId).Balance = item.Monto;
                     }
                     paso = contexto.SaveChanges() > 0;
                 }
@@ -73,10 +73,12 @@ namespace EstudianteInscripcionProyecto.BLL
             Contexto contexto = new Contexto();
             try
             {
-
-          
                 inscripciones = contexto.Inscripciones.Find(id);
-                inscripciones.DetalleInscripciones.Count();
+                if(inscripciones!=null)
+                {
+                    inscripciones.DetalleInscripciones.Count();
+                }
+                
             }catch
             {
                 throw;

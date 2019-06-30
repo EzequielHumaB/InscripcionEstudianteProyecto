@@ -63,47 +63,40 @@ namespace EstudianteInscripcionProyecto.UI.Registros
 
         private void GuardarButton_Click(object sender, EventArgs e)
         {
+            RepositorioBaseBLL<Estudiantes> repositorio = new RepositorioBaseBLL<Estudiantes>();
             bool paso = false;
-            Estudiantes estudiantes = new Estudiantes();
-            if(!Validar())
-            {
+
+            if (!Validar())
                 return;
-            }
 
-            estudiantes = LlenarClase();
-            if(IdEstudiantenumericUpDown.Value == 0)
-            {
-                // RepositorioBaseBLL<Estudiantes> repositorioBaseBLL = new RepositorioBaseBLL<Estudiantes>();
-                //  paso = repositorioBaseBLL.Guardar(estudiantes);
-                paso = EstudiantesBLL.Guardar(estudiantes);
-                MessageBox.Show("Guardado","Exito", MessageBoxButtons.OK,MessageBoxIcon.Information);
-            } else
-            {
-                int id = Convert.ToInt32(IdEstudiantenumericUpDown.Value);
-                //   RepositorioBaseBLL<Estudiantes> repositorioBaseBLL = new RepositorioBaseBLL<Estudiantes>();
-                //  estudiantes = repositorioBaseBLL.Buscar(id);
-                estudiantes = EstudiantesBLL.Buscar(id);
-                if(estudiantes!=null)
-                {
-                    // paso = repositorioBaseBLL.Modificar(LlenarClase());
-                    paso = EstudiantesBLL.Modificar(LlenarClase());
-                    MessageBox.Show("Modificado","Exito",MessageBoxButtons.OK,MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show("Id no existe", "Fracaso", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+            Estudiantes estudiante = LlenarClase();
 
-            }
-
-            if(paso)
+            if (IdEstudiantenumericUpDown.Value == 0)
             {
-                Limpiar();
+                paso = repositorio.Guardar(estudiante);
             }
             else
             {
-                MessageBox.Show("No se pudo guardar","Fallo",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                if (!ExistenEnLaBaseDeDatos())
+                {
+                    MessageBox.Show("No se puede modificar un estudiante que no existe");
+                }
+                else
+                {
+                    paso = repositorio.Modificar(estudiante);
+                }
             }
+            if (paso)
+            {
+                MessageBox.Show("Guardado", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            else
+            {
+                MessageBox.Show("No se pudo guardar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+
         }
 
         private void Eliminarbutton_Click(object sender, EventArgs e)
@@ -113,11 +106,11 @@ namespace EstudianteInscripcionProyecto.UI.Registros
             Limpiar();
             try
             {
-                //    RepositorioBaseBLL<Estudiantes> repositorio = new RepositorioBaseBLL<Estudiantes>();
+                RepositorioBaseBLL<Estudiantes> repositorio = new RepositorioBaseBLL<Estudiantes>();
 
                 Estudiantes estudiantes = new Estudiantes();
                  
-                if(EstudiantesBLL.Eliminar(id))
+                if(repositorio.Eliminar(1))
                 {
                     MessageBox.Show("Eliminado correctamente");
                 }
@@ -139,7 +132,7 @@ namespace EstudianteInscripcionProyecto.UI.Registros
             Limpiar();
             try
             {
-                estudiantes = EstudiantesBLL.Buscar(id);
+               estudiantes = repositorio.Buscar(id);
                 if (estudiantes != null)
                 {
                     MessageBox.Show("Estudiante encontrado");
