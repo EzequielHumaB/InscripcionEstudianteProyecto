@@ -52,7 +52,6 @@ namespace EstudianteInscripcionProyecto.BLL
             {
                 var Inscripcion = contexto.Inscripciones.Find(id);
                 contexto.Entry(Inscripcion).State = EntityState.Deleted;
-                repositorioBaseBLL.Eliminar(id);
                 paso = contexto.SaveChanges() > 0;
             }catch
             {
