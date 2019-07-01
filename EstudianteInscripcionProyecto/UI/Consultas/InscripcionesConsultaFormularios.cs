@@ -12,18 +12,17 @@ using EstudianteInscripcionProyecto.BLL;
 
 namespace EstudianteInscripcionProyecto.UI.Consultas
 {
-    public partial class ConsultaEstudianteRegistro : Form
+    public partial class InscripcionesConsultaFormularios : Form
     {
-        public ConsultaEstudianteRegistro()
+        public InscripcionesConsultaFormularios()
         {
             InitializeComponent();
         }
 
-        private void BucarButton_Click(object sender, EventArgs e)
+        private void Agregarbutton_Click(object sender, EventArgs e)
         {
-            RepositorioBaseBLL<Estudiantes> repositorioBaseBLL = new RepositorioBaseBLL<Estudiantes>();
-
-            var listado = new List<Estudiantes>();
+            Inscripciones inscripciones = new Inscripciones();
+            var listado = new List<Inscripciones>();
             if (CriteriotextBox.Text.Trim().Length > 0)
             {
                 try
@@ -32,34 +31,29 @@ namespace EstudianteInscripcionProyecto.UI.Consultas
                     {
 
                         case 0:
-                            listado = repositorioBaseBLL.GetList(p => true);
+                            listado = InscripcionesBLL.GetList(p => true);
                             break;
                         case 1:
                             int id = Convert.ToInt32(CriteriotextBox.Text);
-                            listado = repositorioBaseBLL.GetList(p => p.EstudianteId == id);
+                            listado = InscripcionesBLL.GetList(p => p.InscripcionesId == id);
                             break;
                         case 2:
-                            listado = repositorioBaseBLL.GetList(p => p.Nombres.Contains(CriteriotextBox.Text));
-                            break;
-                        case 3:
-                            listado = repositorioBaseBLL.GetList(p => p.Balance.ToString() == CriteriotextBox.Text);
-                            break;
+                            listado = InscripcionesBLL.GetList(p => p.Monto.ToString() == CriteriotextBox.Text);
+                            break;         
                     }
                 }
                 catch (Exception)
                 {
 
                 }
-
+             
             }
             else
             {
-                listado = repositorioBaseBLL.GetList(p => true);
+                listado = InscripcionesBLL.GetList(p => true);
             }
-            EstudiantedataGridView.DataSource = null;
-            EstudiantedataGridView.DataSource = listado;
+            InscripcionesdataGridView.DataSource = null;
+            InscripcionesdataGridView.DataSource = listado;
         }
-
     }
-   }
-
+}

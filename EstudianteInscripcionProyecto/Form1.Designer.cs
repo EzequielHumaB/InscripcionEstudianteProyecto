@@ -35,6 +35,8 @@
             this.inscripcionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.estudianteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.asignaturasToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.incripcionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -83,7 +85,9 @@
             // consultasToolStripMenuItem
             // 
             this.consultasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.estudianteToolStripMenuItem1});
+            this.estudianteToolStripMenuItem1,
+            this.asignaturasToolStripMenuItem1,
+            this.incripcionesToolStripMenuItem});
             this.consultasToolStripMenuItem.Name = "consultasToolStripMenuItem";
             this.consultasToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
             this.consultasToolStripMenuItem.Text = "Consultas";
@@ -94,6 +98,20 @@
             this.estudianteToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.estudianteToolStripMenuItem1.Text = "Estudiante";
             this.estudianteToolStripMenuItem1.Click += new System.EventHandler(this.EstudianteToolStripMenuItem1_Click);
+            // 
+            // asignaturasToolStripMenuItem1
+            // 
+            this.asignaturasToolStripMenuItem1.Name = "asignaturasToolStripMenuItem1";
+            this.asignaturasToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.asignaturasToolStripMenuItem1.Text = "Asignaturas";
+            this.asignaturasToolStripMenuItem1.Click += new System.EventHandler(this.AsignaturasToolStripMenuItem1_Click);
+            // 
+            // incripcionesToolStripMenuItem
+            // 
+            this.incripcionesToolStripMenuItem.Name = "incripcionesToolStripMenuItem";
+            this.incripcionesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.incripcionesToolStripMenuItem.Text = "Incripciones";
+            this.incripcionesToolStripMenuItem.Click += new System.EventHandler(this.IncripcionesToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -119,6 +137,8 @@
         private System.Windows.Forms.ToolStripMenuItem inscripcionesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem consultasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem estudianteToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem asignaturasToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem incripcionesToolStripMenuItem;
     }
 }
 

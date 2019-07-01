@@ -47,5 +47,19 @@ namespace EstudianteInscripcionProyecto
             consultaEstudianteRegistro.Show();
 
         }
+
+        private void AsignaturasToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            ConsultaAsignaturasFormulario consultaAsignaturasFormulario = new ConsultaAsignaturasFormulario();
+            consultaAsignaturasFormulario.StartPosition = FormStartPosition.CenterScreen;
+            consultaAsignaturasFormulario.Show();
+        }
+
+        private void IncripcionesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InscripcionesConsultaFormularios inscripcionesConsultaFormularios = new InscripcionesConsultaFormularios();
+            inscripcionesConsultaFormularios.StartPosition = FormStartPosition.CenterScreen;
+            inscripcionesConsultaFormularios.Show();
+        }
     }
 }

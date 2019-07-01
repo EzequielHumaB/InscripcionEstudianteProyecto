@@ -48,7 +48,6 @@
             this.EstudiantedataGridView.Name = "EstudiantedataGridView";
             this.EstudiantedataGridView.Size = new System.Drawing.Size(763, 411);
             this.EstudiantedataGridView.TabIndex = 0;
-            this.EstudiantedataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EstudiantedataGridView_CellContentClick);
             // 
             // DesdedateTimePicker
             // 
@@ -57,7 +56,6 @@
             this.DesdedateTimePicker.Name = "DesdedateTimePicker";
             this.DesdedateTimePicker.Size = new System.Drawing.Size(98, 20);
             this.DesdedateTimePicker.TabIndex = 1;
-            this.DesdedateTimePicker.ValueChanged += new System.EventHandler(this.DesdedateTimePicker_ValueChanged);
             // 
             // label2
             // 
@@ -67,7 +65,6 @@
             this.label2.Size = new System.Drawing.Size(38, 13);
             this.label2.TabIndex = 3;
             this.label2.Text = "Desde";
-            this.label2.Click += new System.EventHandler(this.Label2_Click);
             // 
             // label1
             // 
@@ -77,7 +74,6 @@
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 4;
             this.label1.Text = "Hasta";
-            this.label1.Click += new System.EventHandler(this.Label1_Click);
             // 
             // HastadateTimePicker
             // 
@@ -86,17 +82,15 @@
             this.HastadateTimePicker.Name = "HastadateTimePicker";
             this.HastadateTimePicker.Size = new System.Drawing.Size(90, 20);
             this.HastadateTimePicker.TabIndex = 5;
-            this.HastadateTimePicker.ValueChanged += new System.EventHandler(this.HastadateTimePicker_ValueChanged);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(313, 13);
+            this.label3.Location = new System.Drawing.Point(313, 9);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(29, 13);
             this.label3.TabIndex = 6;
             this.label3.Text = "Filtro";
-            this.label3.Click += new System.EventHandler(this.Label3_Click);
             // 
             // label4
             // 
@@ -106,7 +100,6 @@
             this.label4.Size = new System.Drawing.Size(39, 13);
             this.label4.TabIndex = 7;
             this.label4.Text = "Criterio";
-            this.label4.Click += new System.EventHandler(this.Label4_Click);
             // 
             // FiltrocomboBox
             // 
@@ -121,7 +114,6 @@
             this.FiltrocomboBox.Name = "FiltrocomboBox";
             this.FiltrocomboBox.Size = new System.Drawing.Size(121, 21);
             this.FiltrocomboBox.TabIndex = 8;
-            this.FiltrocomboBox.SelectedIndexChanged += new System.EventHandler(this.FiltrocomboBox_SelectedIndexChanged);
             // 
             // CriteriotextBox
             // 
@@ -129,7 +121,6 @@
             this.CriteriotextBox.Name = "CriteriotextBox";
             this.CriteriotextBox.Size = new System.Drawing.Size(150, 20);
             this.CriteriotextBox.TabIndex = 9;
-            this.CriteriotextBox.TextChanged += new System.EventHandler(this.CriteriotextBox_TextChanged);
             // 
             // button1
             // 

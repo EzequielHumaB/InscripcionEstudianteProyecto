@@ -37,11 +37,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.DesdedateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.EstudiantedataGridView = new System.Windows.Forms.DataGridView();
+            this.AsignautasdataGridView = new System.Windows.Forms.DataGridView();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.EstudiantedataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AsignautasdataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -52,6 +52,7 @@
             this.button1.TabIndex = 20;
             this.button1.Text = "Buscar";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.AgregarButton_Click);
             // 
             // CriteriotextBox
             // 
@@ -65,8 +66,10 @@
             this.FiltrocomboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.FiltrocomboBox.FormattingEnabled = true;
             this.FiltrocomboBox.Items.AddRange(new object[] {
+            "Todos",
             "Id",
-            "Nombres"});
+            "Descripcion",
+            "Creditos"});
             this.FiltrocomboBox.Location = new System.Drawing.Point(302, 27);
             this.FiltrocomboBox.Name = "FiltrocomboBox";
             this.FiltrocomboBox.Size = new System.Drawing.Size(121, 21);
@@ -124,13 +127,13 @@
             this.DesdedateTimePicker.Size = new System.Drawing.Size(98, 20);
             this.DesdedateTimePicker.TabIndex = 12;
             // 
-            // EstudiantedataGridView
+            // AsignautasdataGridView
             // 
-            this.EstudiantedataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.EstudiantedataGridView.Location = new System.Drawing.Point(11, 66);
-            this.EstudiantedataGridView.Name = "EstudiantedataGridView";
-            this.EstudiantedataGridView.Size = new System.Drawing.Size(763, 388);
-            this.EstudiantedataGridView.TabIndex = 11;
+            this.AsignautasdataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.AsignautasdataGridView.Location = new System.Drawing.Point(11, 66);
+            this.AsignautasdataGridView.Name = "AsignautasdataGridView";
+            this.AsignautasdataGridView.Size = new System.Drawing.Size(763, 388);
+            this.AsignautasdataGridView.TabIndex = 11;
             // 
             // label5
             // 
@@ -176,10 +179,10 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.DesdedateTimePicker);
-            this.Controls.Add(this.EstudiantedataGridView);
+            this.Controls.Add(this.AsignautasdataGridView);
             this.Name = "ConsultaAsignaturasFormulario";
             this.Text = "Consulta de asignaturas";
-            ((System.ComponentModel.ISupportInitialize)(this.EstudiantedataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AsignautasdataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -196,7 +199,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker DesdedateTimePicker;
-        private System.Windows.Forms.DataGridView EstudiantedataGridView;
+        private System.Windows.Forms.DataGridView AsignautasdataGridView;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
