@@ -146,6 +146,10 @@ namespace EstudianteInscripcionProyecto.UI.Registros
                     MessageBox.Show("Asignatura encontrada");
                     LlenarCampo(asignaturas);
                 }
+                else
+                {
+                    MessageBox.Show("No se pudo encontrar la asignatura");
+                }
             }catch
             {
                 MessageBox.Show("La asignatura no existe");

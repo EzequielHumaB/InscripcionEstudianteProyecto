@@ -13,7 +13,7 @@ namespace EstudianteInscripcionProyecto.Entidades
 
         [Key]
         public int DetalleInscripcionId { get; set; }
-        public int InscripcionId { get; set; }
+        public int InscripcionesId { get; set; }
         public decimal MontoDetalle { get; set; }
 
         public int EstudianteId { get; set; }

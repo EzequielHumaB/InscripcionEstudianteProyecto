@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using EstudianteInscripcionProyecto.UI.Registros;
+using EstudianteInscripcionProyecto.UI.Consultas;
 
 namespace EstudianteInscripcionProyecto
 {
@@ -37,6 +38,11 @@ namespace EstudianteInscripcionProyecto
             InscripcionesFormulario inscripcionesFormulario = new InscripcionesFormulario();
             inscripcionesFormulario.StartPosition = FormStartPosition.CenterScreen;
             inscripcionesFormulario.Show();
+        }
+
+        private void EstudianteToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            ConsultaEstudianteRegistro consultaEstudianteRegistro = new ConsultaEstudianteRegistro();
         }
     }
 }

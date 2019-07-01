@@ -109,10 +109,12 @@
             // 
             // BalancenumericUpDown
             // 
+            this.BalancenumericUpDown.Enabled = false;
             this.BalancenumericUpDown.Location = new System.Drawing.Point(128, 137);
             this.BalancenumericUpDown.Name = "BalancenumericUpDown";
             this.BalancenumericUpDown.Size = new System.Drawing.Size(44, 20);
             this.BalancenumericUpDown.TabIndex = 7;
+            this.BalancenumericUpDown.ValueChanged += new System.EventHandler(this.BalancenumericUpDown_ValueChanged);
             // 
             // Eliminarbutton
             // 

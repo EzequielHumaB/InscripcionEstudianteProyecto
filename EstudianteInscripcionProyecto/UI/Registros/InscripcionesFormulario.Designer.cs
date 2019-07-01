@@ -93,6 +93,11 @@
             // IdnumericUpDown
             // 
             this.IdnumericUpDown.Location = new System.Drawing.Point(132, 24);
+            this.IdnumericUpDown.Maximum = new decimal(new int[] {
+            1316134912,
+            2328,
+            0,
+            0});
             this.IdnumericUpDown.Name = "IdnumericUpDown";
             this.IdnumericUpDown.Size = new System.Drawing.Size(50, 20);
             this.IdnumericUpDown.TabIndex = 3;

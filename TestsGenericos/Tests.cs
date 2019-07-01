@@ -24,7 +24,7 @@ namespace TestsGenericos
             inscripciones.DetalleInscripciones.Add(new DetalleInscripciones()
             {
                 DetalleInscripcionId = 1,
-                InscripcionId = 1,
+                InscripcionesId = 1,
                 EstudianteId = 1,
                 Balance = 1212,
             }); 

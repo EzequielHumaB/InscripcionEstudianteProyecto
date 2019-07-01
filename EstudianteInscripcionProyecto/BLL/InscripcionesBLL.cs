@@ -46,12 +46,17 @@ namespace EstudianteInscripcionProyecto.BLL
         public static bool Eliminar(int id)
         {
             bool paso = false;
-            Contexto contexto = new Contexto(); 
+            Contexto contexto = new Contexto();
             try
             {
                 var Inscripcion = contexto.Inscripciones.Find(id);
                 contexto.Entry(Inscripcion).State = EntityState.Deleted;
-                paso = (contexto.SaveChanges() > 0);
+
+                if(contexto.SaveChanges()>0)
+                {
+                    paso = true;
+                }
+
             }catch
             {
                 throw;
@@ -69,8 +74,11 @@ namespace EstudianteInscripcionProyecto.BLL
             Contexto contexto = new Contexto();
             try
             {
-                inscripciones = contexto.Inscripciones.Find(id);  
-                inscripciones.DetalleInscripciones.Count();
+                inscripciones = contexto.Inscripciones.Find(id);
+                if(inscripciones!=null)
+                {
+                    inscripciones.DetalleInscripciones.Count();
+                }
             }catch
             {
                 throw;
@@ -103,7 +111,6 @@ namespace EstudianteInscripcionProyecto.BLL
         public static bool Modificar(Inscripciones inscripciones)
         {
            bool paso = false;
-           decimal resultado = 0;
            Contexto contexto = new Contexto();
            RepositorioBaseBLL<Estudiantes> repositorioBaseBLL = new RepositorioBaseBLL<Estudiantes>();
            try
@@ -111,11 +118,6 @@ namespace EstudianteInscripcionProyecto.BLL
               var estudiante = repositorioBaseBLL.Buscar(inscripciones.EstudianteId);
               var anterior = new RepositorioBaseBLL<Inscripciones>().Buscar(inscripciones.InscripcionesId);
 
-              foreach(var item in inscripciones.DetalleInscripciones)
-                {
-                    resultado = contexto.Estudiantes.Find(item.EstudianteId).Balance =
-                        item.MontoDetalle - item.Creditos;
-                }
               foreach(var item in anterior.DetalleInscripciones)
               {
                   if(!inscripciones.DetalleInscripciones.Any(A =>A.DetalleInscripcionId == item.DetalleInscripcionId))

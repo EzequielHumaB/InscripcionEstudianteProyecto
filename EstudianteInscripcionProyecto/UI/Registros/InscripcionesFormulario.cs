@@ -46,7 +46,6 @@ namespace EstudianteInscripcionProyecto.UI.Registros
             inscripciones.InscripcionesId = (int)IdnumericUpDown.Value;
             inscripciones.FechaInscripcion = FechadateTimePicker.Value;
             inscripciones.EstudianteId =Convert.ToInt32(EstudiantecomboBox.SelectedValue);
-           // ResultadoNumerohumericUpDown.Value = inscripciones.CalcularMonto();
             inscripciones.Monto = MontonumericUpDown.Value;
             inscripciones.Monto = ResultadoNumerohumericUpDown.Value;
             inscripciones.DetalleInscripciones = this.DetalleInscripciones;
@@ -100,7 +99,6 @@ namespace EstudianteInscripcionProyecto.UI.Registros
             {
                 int id = Convert.ToInt32(IdnumericUpDown.Value);
                 inscripcion = InscripcionesBLL.Buscar(id);
-
                 if (inscripcion != null)
                 {
                     paso = InscripcionesBLL.Modificar(LlenarClase());
@@ -149,8 +147,12 @@ namespace EstudianteInscripcionProyecto.UI.Registros
                 inscripciones = InscripcionesBLL.Buscar(id);
                 if (inscripciones != null)
                 {
-                    MessageBox.Show("Producto encontrado");
+                    MessageBox.Show("Inscripcion encontrado");
                     LlenarCampo(inscripciones);
+                }
+                else
+                {
+                    MessageBox.Show("Inscripcion no encontrada");
                 }
             }
             catch (Exception)

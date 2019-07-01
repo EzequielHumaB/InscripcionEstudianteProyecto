@@ -137,10 +137,24 @@ namespace EstudianteInscripcionProyecto.UI.Registros
                     MessageBox.Show("Estudiante encontrado");
                     LlenarCampo(estudiantes);
                 }
+                else
+                {
+                    MessageBox.Show("No se pudo encontrar");
+                }
             }
             catch (Exception)
             {
                 MessageBox.Show("No existe el estudiante");
+            }
+        }
+
+        private void BalancenumericUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            Inscripciones inscripciones = new Inscripciones();
+            decimal resultado = 0;
+            foreach(var item in inscripciones.DetalleInscripciones)
+            {
+                resultado =  item.Creditos * item.MontoDetalle;
             }
         }
     }
