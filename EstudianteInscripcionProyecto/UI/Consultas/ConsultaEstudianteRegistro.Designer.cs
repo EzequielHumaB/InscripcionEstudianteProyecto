@@ -35,8 +35,8 @@
             this.HastadateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.FiltrocomboBox = new System.Windows.Forms.ComboBox();
+            this.CriteriotextBox = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.EstudiantedataGridView)).BeginInit();
             this.SuspendLayout();
@@ -101,20 +101,20 @@
             this.label4.TabIndex = 7;
             this.label4.Text = "Criterio";
             // 
-            // comboBox1
+            // FiltrocomboBox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(316, 26);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 8;
+            this.FiltrocomboBox.FormattingEnabled = true;
+            this.FiltrocomboBox.Location = new System.Drawing.Point(316, 26);
+            this.FiltrocomboBox.Name = "FiltrocomboBox";
+            this.FiltrocomboBox.Size = new System.Drawing.Size(121, 21);
+            this.FiltrocomboBox.TabIndex = 8;
             // 
-            // textBox1
+            // CriteriotextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(483, 27);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(150, 20);
-            this.textBox1.TabIndex = 9;
+            this.CriteriotextBox.Location = new System.Drawing.Point(483, 27);
+            this.CriteriotextBox.Name = "CriteriotextBox";
+            this.CriteriotextBox.Size = new System.Drawing.Size(150, 20);
+            this.CriteriotextBox.TabIndex = 9;
             // 
             // button1
             // 
@@ -124,6 +124,7 @@
             this.button1.TabIndex = 10;
             this.button1.Text = "Buscar";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.BucarButton_Click);
             // 
             // ConsultaEstudianteRegistro
             // 
@@ -131,8 +132,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(808, 497);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.CriteriotextBox);
+            this.Controls.Add(this.FiltrocomboBox);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.HastadateTimePicker);
@@ -157,8 +158,8 @@
         private System.Windows.Forms.DateTimePicker HastadateTimePicker;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ComboBox FiltrocomboBox;
+        private System.Windows.Forms.TextBox CriteriotextBox;
         private System.Windows.Forms.Button button1;
     }
 }
