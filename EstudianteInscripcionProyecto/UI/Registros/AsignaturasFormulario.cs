@@ -121,13 +121,11 @@ namespace EstudianteInscripcionProyecto.UI.Registros
             RepositorioBaseBLL<Asignaturas> repositorio = new RepositorioBaseBLL<Asignaturas>();
             try
             {
-                
                 if(repositorio.Eliminar(id))
                 {
                     MessageBox.Show("Eliminado con existo");
                     Limpiar();
                 }
-
             }catch
             {
                 MessageBox.Show("No se pudo eliminar");
