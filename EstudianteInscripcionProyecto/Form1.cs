@@ -43,6 +43,9 @@ namespace EstudianteInscripcionProyecto
         private void EstudianteToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             ConsultaEstudianteRegistro consultaEstudianteRegistro = new ConsultaEstudianteRegistro();
+            consultaEstudianteRegistro.StartPosition = FormStartPosition.CenterScreen;
+            consultaEstudianteRegistro.Show();
+
         }
     }
 }

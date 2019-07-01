@@ -57,7 +57,6 @@ namespace EstudianteInscripcionProyecto.UI.Registros
             IdnumericUpDown.Value = inscripciones.InscripcionesId;
             FechadateTimePicker.Value = inscripciones.FechaInscripcion;
             MontonumericUpDown.Value = inscripciones.Monto;
-            //ResultadoNumerohumericUpDown.Value = inscripciones.CalcularMonto();
             this.DetalleInscripciones = inscripciones.DetalleInscripciones;
             CargarGrid();
         }
@@ -65,7 +64,7 @@ namespace EstudianteInscripcionProyecto.UI.Registros
         private bool Validar()
         {
             bool paso = true;
-            if(MontonumericUpDown.Value == 0)
+            if(MontonumericUpDown.Value <= 0)
             {
                 MyerrorProvider.SetError(MontonumericUpDown,"El monto no puede ser cero");
                 MontonumericUpDown.Focus();
@@ -75,6 +74,12 @@ namespace EstudianteInscripcionProyecto.UI.Registros
             {
                 MyerrorProvider.SetError(DetalledataGridView,"El detalle no puede estar vacio");
                 DetalledataGridView.Focus();
+                paso = false;
+            }
+            if(DetalleIdnumericUpDown.Value <0)
+            {
+                MyerrorProvider.SetError(DetalleIdnumericUpDown, "El detalle id no puede ser menor que cero");
+                DetalleIdnumericUpDown.Focus();
                 paso = false;
             }
             return paso;

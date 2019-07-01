@@ -46,12 +46,12 @@ namespace EstudianteInscripcionProyecto.BLL
         public static bool Eliminar(int id)
         {
             bool paso = false;
+            Estudiantes estudiantes = new Estudiantes();
             Contexto contexto = new Contexto();
             try
             {
                 var Inscripcion = contexto.Inscripciones.Find(id);
                 contexto.Entry(Inscripcion).State = EntityState.Deleted;
-
                 if(contexto.SaveChanges()>0)
                 {
                     paso = true;

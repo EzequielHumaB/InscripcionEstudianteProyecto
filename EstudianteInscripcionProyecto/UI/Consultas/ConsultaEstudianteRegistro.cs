@@ -27,11 +27,10 @@ namespace EstudianteInscripcionProyecto.UI.Consultas
             {
                 switch (FiltrocomboBox.SelectedIndex)
                 {
-                    //Todo
                     case 0:
                         listado = repositorioBaseBLL.GetList(p => true);
                         break;
-                    case 1: //Seleccionar ID
+                    case 1: 
                         int id = Convert.ToInt32(CriteriotextBox.Text);
                         listado = repositorioBaseBLL.GetList(p => p.EstudianteId == id);
                         break;
@@ -39,12 +38,11 @@ namespace EstudianteInscripcionProyecto.UI.Consultas
                         listado = repositorioBaseBLL.GetList(p => p.Nombres==CriteriotextBox.Text);
                         break;
                     case 3:
-                       
-                        listado = repositorioBaseBLL.GetList(p => p.Balance == CriteriotextBox.Text);
+                        listado = repositorioBaseBLL.GetList(p => p.Balance.ToString() == CriteriotextBox.Text);
                         break;                    
-                         
                 }
-
+                listado = listado.Where(c => c.FechaIngreso.Date >= DesdedateTimePicker.Value.Date &&
+                c.FechaIngreso.Date <= HastadateTimePicker.Value.Date).ToList();
             }
             else
             {
@@ -53,6 +51,7 @@ namespace EstudianteInscripcionProyecto.UI.Consultas
             EstudiantedataGridView.DataSource = null;
             EstudiantedataGridView.DataSource = listado;
         }
+    
     }
     }
-}
+
