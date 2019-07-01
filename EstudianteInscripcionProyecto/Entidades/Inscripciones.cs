@@ -10,13 +10,14 @@ namespace EstudianteInscripcionProyecto.Entidades
 {
    public class Inscripciones
     {
+        Estudiantes estudiantes = new Estudiantes();
+        Asignaturas asignaturas = new Asignaturas();
         [Key]
         public int InscripcionesId { get; set; }
         public DateTime FechaInscripcion { get; set; }
         public decimal Monto { get; set; }
         public int EstudianteId { get; set; }
 
-        public virtual List<Asignaturas> Asignaturas { get; set; }
 
         public virtual List<DetalleInscripciones> DetalleInscripciones { get; set; }
         public Inscripciones()
@@ -26,7 +27,6 @@ namespace EstudianteInscripcionProyecto.Entidades
             Monto = 0;
             EstudianteId = 0;
             DetalleInscripciones = new List<DetalleInscripciones>();
-            Asignaturas = new List<Asignaturas>();
         }
 
         public void CalcularMonto()
@@ -34,7 +34,7 @@ namespace EstudianteInscripcionProyecto.Entidades
             decimal resultado = 0;
             foreach(var item in DetalleInscripciones)
             {
-                resultado *= item.MontoDetalle;
+                resultado += (item.MontoDetalle*item.Creditos);
             }
             Monto = resultado;
         }

@@ -16,24 +16,26 @@ namespace EstudianteInscripcionProyecto.BLL
         public static bool Guardar(Inscripciones inscripciones)
         {
             bool paso = false;
-            Estudiantes estudiantes = new Estudiantes();
+            decimal resultado = 0;
             RepositorioBaseBLL<Estudiantes> repositorioBaseBLL = new RepositorioBaseBLL<Estudiantes>();
             Contexto contexto = new Contexto();
             try
             {     
                 if(contexto.Inscripciones.Add(inscripciones)!=null)
                 {
-                //    var buscarEstudiante = repositorioBaseBLL.Buscar(inscripciones.EstudianteId);
-                  //  inscripciones.CalcularMonto();
-                  //  estudiantes.Balance = inscripciones.Monto;
+                    
+                    foreach (var item in inscripciones.DetalleInscripciones)
+                    {
+                        resultado = contexto.Estudiantes.Find(item.EstudianteId).Balance = item.MontoDetalle * item.Creditos;
+                    }
                     paso = contexto.SaveChanges() > 0;
-                    //repositorioBaseBLL.Modificar(buscarEstudiante);
                 }
 
+                decimal costo = inscripciones.Monto;
           }catch
             {
                 throw;
-           }
+            }
            finally
             {
                 contexto.Dispose();
@@ -44,17 +46,13 @@ namespace EstudianteInscripcionProyecto.BLL
         public static bool Eliminar(int id)
         {
             bool paso = false;
-            Inscripciones inscripciones = new Inscripciones();
+            RepositorioBaseBLL<Estudiantes> repositorioBaseBLL = new RepositorioBaseBLL<Estudiantes>();
             Contexto contexto = new Contexto(); 
             try
             {
                 var Inscripcion = contexto.Inscripciones.Find(id);
-                var estudiante = E.Buscar(Inscripcion.EstudianteId);
-                estudiante.Balance = estudiante.Balance - Inscripcion.MontoInscripcion;
-                Est.Modificar(estudiante);
-                db.Entry(Inscripcion).State = EntityState.Deleted;
-             
-
+                contexto.Entry(Inscripcion).State = EntityState.Deleted;
+                repositorioBaseBLL.Eliminar(id);
                 paso = contexto.SaveChanges() > 0;
             }catch
             {
@@ -107,13 +105,19 @@ namespace EstudianteInscripcionProyecto.BLL
         public static bool Modificar(Inscripciones inscripciones)
         {
            bool paso = false;
+           decimal resultado = 0;
            Contexto contexto = new Contexto();
            RepositorioBaseBLL<Estudiantes> repositorioBaseBLL = new RepositorioBaseBLL<Estudiantes>();
            try
            {
               var estudiante = repositorioBaseBLL.Buscar(inscripciones.EstudianteId);
               var anterior = new RepositorioBaseBLL<Inscripciones>().Buscar(inscripciones.InscripcionesId);
-              estudiante.Balance = anterior.Monto;
+
+              foreach(var item in inscripciones.DetalleInscripciones)
+                {
+                    resultado = contexto.Estudiantes.Find(item.EstudianteId).Balance =
+                        item.MontoDetalle - item.Creditos;
+                }
               foreach(var item in anterior.DetalleInscripciones)
               {
                   if(!inscripciones.DetalleInscripciones.Any(A =>A.DetalleInscripcionId == item.DetalleInscripcionId))
@@ -127,11 +131,11 @@ namespace EstudianteInscripcionProyecto.BLL
               {
                  contexto.Entry(item).State = EntityState.Added;
               }
-                    else
-                    {
-                        contexto.Entry(item).State = EntityState.Modified;
-                    }
-                    
+               else
+              {
+                  contexto.Entry(item).State = EntityState.Modified;
+              }
+                  
                 }
                 contexto.Entry(inscripciones).State = EntityState.Modified;
                 paso = contexto.SaveChanges() > 0;
@@ -147,6 +151,5 @@ namespace EstudianteInscripcionProyecto.BLL
             }
             return paso;
         }
-  
     }
 }

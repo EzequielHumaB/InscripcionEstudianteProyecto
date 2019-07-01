@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using EstudianteInscripcionProyecto.Entidades;
 using EstudianteInscripcionProyecto.BLL;
 
+
 namespace EstudianteInscripcionProyecto.UI.Registros
 {
     public partial class InscripcionesFormulario : Form
@@ -20,6 +21,7 @@ namespace EstudianteInscripcionProyecto.UI.Registros
             this.DetalleInscripciones = new List<DetalleInscripciones>();
             InitializeComponent();
             LlenarComboBox();
+            LlenarAsignaturaComboBox();
         }
 
         private void Limpiar()
@@ -40,10 +42,13 @@ namespace EstudianteInscripcionProyecto.UI.Registros
         private Inscripciones LlenarClase()
         {
             Inscripciones inscripciones = new Inscripciones();
+            Asignaturas asignaturas = new Asignaturas();
             inscripciones.InscripcionesId = (int)IdnumericUpDown.Value;
             inscripciones.FechaInscripcion = FechadateTimePicker.Value;
             inscripciones.EstudianteId =Convert.ToInt32(EstudiantecomboBox.SelectedValue);
+           // ResultadoNumerohumericUpDown.Value = inscripciones.CalcularMonto();
             inscripciones.Monto = MontonumericUpDown.Value;
+            inscripciones.Monto = ResultadoNumerohumericUpDown.Value;
             inscripciones.DetalleInscripciones = this.DetalleInscripciones;
             return inscripciones;
         }
@@ -53,6 +58,7 @@ namespace EstudianteInscripcionProyecto.UI.Registros
             IdnumericUpDown.Value = inscripciones.InscripcionesId;
             FechadateTimePicker.Value = inscripciones.FechaInscripcion;
             MontonumericUpDown.Value = inscripciones.Monto;
+            //ResultadoNumerohumericUpDown.Value = inscripciones.CalcularMonto();
             this.DetalleInscripciones = inscripciones.DetalleInscripciones;
             CargarGrid();
         }
@@ -159,20 +165,32 @@ namespace EstudianteInscripcionProyecto.UI.Registros
             DetalledataGridView.DataSource = this.DetalleInscripciones;
         }
 
+        private void Acumular()
+        {
+            Inscripciones inscripciones = new Inscripciones();
+            decimal acumulador = 0;
+            foreach (var item in inscripciones.DetalleInscripciones)
+            {
+                acumulador = item.Creditos;
+            }
+            AcumularCreditosnumericUpDown.Value = acumulador;
+        }
         private void AgregarAlGridbutton_Click(object sender, EventArgs e)
         {
+            
             Estudiantes estudiantes = new Estudiantes();
             if (DetalledataGridView.DataSource != null)
                 this.DetalleInscripciones = (List<DetalleInscripciones>) DetalledataGridView.DataSource;
-            
+
+            string res = AsignaturacomboBox.DisplayMember.ToString();
             this.DetalleInscripciones.Add(
                 new DetalleInscripciones(
-                 DetalleInscripcionId:0,
+                 DetalleInscripcionId: 0,
                  EstudianteId: (int)EstudiantecomboBox.SelectedValue,
                  MontoDetalle: (int)MontonumericUpDown.Value,
-                 Asignatura:1
+                 creditos: (short)AsignaturacomboBox.SelectedValue
                  )
-               );
+               ); 
             CargarGrid();
             DetalledataGridView.Focus();
         }
@@ -202,6 +220,28 @@ namespace EstudianteInscripcionProyecto.UI.Registros
             EstudiantecomboBox.DataSource = listado;
             EstudiantecomboBox.DisplayMember = "Nombres";
             EstudiantecomboBox.ValueMember = "EstudianteId";
+        }
+
+        private void Asignaturabutton_Click(object sender, EventArgs e)
+        {
+            AsignaturasFormulario asignaturasFormulario = new AsignaturasFormulario();
+            asignaturasFormulario.StartPosition = FormStartPosition.CenterScreen;
+            asignaturasFormulario.ShowDialog();
+        }
+
+        private void LlenarAsignaturaComboBox()
+        {
+            RepositorioBaseBLL<Asignaturas> repositorioBaseBLL = new RepositorioBaseBLL<Asignaturas>();
+            var listado = new List<Asignaturas>();
+            listado = repositorioBaseBLL.GetList(p => true);
+            AsignaturacomboBox.DataSource = listado;
+            AsignaturacomboBox.DisplayMember = "Descripcion";
+            AsignaturacomboBox.ValueMember = "Creditos";
+        }
+
+        private void AcumularCreditosnumericUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }

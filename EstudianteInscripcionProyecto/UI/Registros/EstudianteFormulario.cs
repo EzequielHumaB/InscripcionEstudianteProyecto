@@ -94,9 +94,8 @@ namespace EstudianteInscripcionProyecto.UI.Registros
             else
             {
                 MessageBox.Show("No se pudo guardar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
             }
-
+            Limpiar();
         }
 
         private void Eliminarbutton_Click(object sender, EventArgs e)

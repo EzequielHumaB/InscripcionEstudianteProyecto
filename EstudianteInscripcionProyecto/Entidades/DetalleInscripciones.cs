@@ -19,9 +19,10 @@ namespace EstudianteInscripcionProyecto.Entidades
         public int EstudianteId { get; set; }
 
         public decimal Balance { get; set; }
+        
         public int AsignaturaId { get;  set; }
 
-      
+        public int Creditos { get; set; }
 
         public DetalleInscripciones()
         {
@@ -31,12 +32,12 @@ namespace EstudianteInscripcionProyecto.Entidades
             AsignaturaId = 0;
         }
 
-        public DetalleInscripciones(int DetalleInscripcionId, int EstudianteId, decimal MontoDetalle, int Asignatura )
+        public DetalleInscripciones(int DetalleInscripcionId, int EstudianteId, decimal MontoDetalle,int creditos)
         {
             this.DetalleInscripcionId = DetalleInscripcionId;
             this.EstudianteId = EstudianteId;
             this.MontoDetalle = MontoDetalle;
-            AsignaturaId = Asignatura;
+            Creditos = creditos;
         }
     }
 }
