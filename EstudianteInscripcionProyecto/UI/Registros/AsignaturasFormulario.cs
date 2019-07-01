@@ -118,10 +118,11 @@ namespace EstudianteInscripcionProyecto.UI.Registros
         {
             int id;
             id = (int)IdnumericUpDown.Value;
+            RepositorioBaseBLL<Asignaturas> repositorio = new RepositorioBaseBLL<Asignaturas>();
             try
             {
                 
-                if(AsignaturasBLL.Eliminar(id))
+                if(repositorio.Eliminar(id))
                 {
                     MessageBox.Show("Eliminado con existo");
                     Limpiar();
@@ -137,10 +138,11 @@ namespace EstudianteInscripcionProyecto.UI.Registros
         {
             int id;
             id = (int)IdnumericUpDown.Value;
+            RepositorioBaseBLL<Asignaturas> repositorioBaseBLL = new RepositorioBaseBLL<Asignaturas>();
             Asignaturas asignaturas = new Asignaturas();
             try
             {
-                asignaturas = AsignaturasBLL.Buscar(id);
+                asignaturas = repositorioBaseBLL.Buscar(id);
                 if(asignaturas!=null)
                 {
                     MessageBox.Show("Asignatura encontrada");
