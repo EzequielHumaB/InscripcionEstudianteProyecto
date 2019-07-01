@@ -25,21 +25,29 @@ namespace EstudianteInscripcionProyecto.UI.Consultas
             var listado = new List<Estudiantes>();
             if (CriteriotextBox.Text.Trim().Length > 0)
             {
-                switch (FiltrocomboBox.SelectedIndex)
+                try
                 {
-                    case 0:
-                        listado = repositorioBaseBLL.GetList(p => true);
-                        break;
-                    case 1: 
-                        int id = Convert.ToInt32(CriteriotextBox.Text);
-                        listado = repositorioBaseBLL.GetList(p => p.EstudianteId == id);
-                        break;
-                    case 2:
-                        listado = repositorioBaseBLL.GetList(p => p.Nombres==CriteriotextBox.Text);
-                        break;
-                    case 3:
-                        listado = repositorioBaseBLL.GetList(p => p.Balance.ToString() == CriteriotextBox.Text);
-                        break;                    
+                    switch (FiltrocomboBox.SelectedIndex)
+                    {
+
+                        case 0:
+                            listado = repositorioBaseBLL.GetList(p => true);
+                            break;
+                        case 1:
+                            int id = Convert.ToInt32(CriteriotextBox.Text);
+                            listado = repositorioBaseBLL.GetList(p => p.EstudianteId == id);
+                            break;
+                        case 2:
+                            listado = repositorioBaseBLL.GetList(p => p.Nombres.Contains(CriteriotextBox.Text));
+                            break;
+                        case 3:
+                            listado = repositorioBaseBLL.GetList(p => p.Balance.ToString() == CriteriotextBox.Text);
+                            break;
+                    }
+                }
+                catch (Exception)
+                {
+                    
                 }
                 listado = listado.Where(c => c.FechaIngreso.Date >= DesdedateTimePicker.Value.Date &&
                 c.FechaIngreso.Date <= HastadateTimePicker.Value.Date).ToList();
@@ -51,7 +59,51 @@ namespace EstudianteInscripcionProyecto.UI.Consultas
             EstudiantedataGridView.DataSource = null;
             EstudiantedataGridView.DataSource = listado;
         }
-    
+
+        private void CriteriotextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FiltrocomboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void HastadateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DesdedateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void EstudiantedataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
     }
 

@@ -26,7 +26,8 @@ namespace EstudianteInscripcionProyecto.BLL
                     
                     foreach (var item in inscripciones.DetalleInscripciones)
                     {
-                        resultado = contexto.Estudiantes.Find(item.EstudianteId).Balance = item.MontoDetalle * item.Creditos;
+                        resultado = contexto.Estudiantes.Find(item.EstudianteId).Balance = 
+                            item.MontoDetalle * item.Creditos;
                     }
                     paso = contexto.SaveChanges() > 0;
                 }
