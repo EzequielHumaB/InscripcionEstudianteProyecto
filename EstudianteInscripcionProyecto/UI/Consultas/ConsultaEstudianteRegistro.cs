@@ -24,42 +24,85 @@ namespace EstudianteInscripcionProyecto.UI.Consultas
             RepositorioBaseBLL<Estudiantes> repositorioBaseBLL = new RepositorioBaseBLL<Estudiantes>();
 
             var listado = new List<Estudiantes>();
-            if (CriteriotextBox.Text.Trim().Length > 0)
+            if(FiltrarFechacheckBox.Checked == true)
             {
-                try
+                if (CriteriotextBox.Text.Trim().Length > 0)
                 {
-                    switch (FiltrocomboBox.SelectedIndex)
+                    try
+                    {
+                        switch (FiltrocomboBox.SelectedIndex)
+                        {
+
+                            case 0:
+                                listado = repositorioBaseBLL.GetList(p => true);
+                                break;
+                            case 1:
+                                int id = Convert.ToInt32(CriteriotextBox.Text);
+                                listado = repositorioBaseBLL.GetList(p => p.EstudianteId == id);
+                                break;
+                            case 2:
+                                listado = repositorioBaseBLL.GetList(p => p.Nombres.Contains(CriteriotextBox.Text));
+                                break;
+                            case 3:
+                                listado = repositorioBaseBLL.GetList(p => p.Balance.ToString() == CriteriotextBox.Text);
+                                break;
+                        }
+                    }
+                    catch (Exception)
                     {
 
-                        case 0:
-                            listado = repositorioBaseBLL.GetList(p => true);
-                            break;
-                        case 1:
-                            int id = Convert.ToInt32(CriteriotextBox.Text);
-                            listado = repositorioBaseBLL.GetList(p => p.EstudianteId == id);
-                            break;
-                        case 2:
-                            listado = repositorioBaseBLL.GetList(p => p.Nombres.Contains(CriteriotextBox.Text));
-                            break;
-                        case 3:
-                            listado = repositorioBaseBLL.GetList(p => p.Balance.ToString() == CriteriotextBox.Text);
-                            break;
                     }
-                }
-                catch (Exception)
-                {
 
                 }
+                else
+                    listado = repositorioBaseBLL.GetList(p => true);
 
+
+                EstudiantedataGridView.DataSource = null;
+                EstudiantedataGridView.DataSource = listado;
             }
+
             else
             {
-                listado = repositorioBaseBLL.GetList(p => true);
+                if (CriteriotextBox.Text.Trim().Length > 0)
+                {
+                    try
+                    {
+                        switch (FiltrocomboBox.SelectedIndex)
+                        {
+
+                            case 0:
+                                listado = repositorioBaseBLL.GetList(p => true);
+                                break;
+                            case 1:
+                                int id = Convert.ToInt32(CriteriotextBox.Text);
+                                listado = repositorioBaseBLL.GetList(p => p.EstudianteId == id);
+                                break;
+                            case 2:
+                                listado = repositorioBaseBLL.GetList(p => p.Nombres.Contains(CriteriotextBox.Text));
+                                break;
+                            case 3:
+                                listado = repositorioBaseBLL.GetList(p => p.Balance.ToString() == CriteriotextBox.Text);
+                                break;
+                        }
+                    }
+                    catch (Exception)
+                    {
+
+                    }
+
+                }
+                else
+                    listado = repositorioBaseBLL.GetList(p => true);
+
+
+                EstudiantedataGridView.DataSource = null;
+                EstudiantedataGridView.DataSource = listado;
             }
-            EstudiantedataGridView.DataSource = null;
-            EstudiantedataGridView.DataSource = listado;
         }
 
     }
-   }
+
+    }
+   
 

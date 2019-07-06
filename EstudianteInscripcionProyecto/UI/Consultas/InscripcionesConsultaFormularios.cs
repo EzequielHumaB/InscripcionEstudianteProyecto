@@ -23,37 +23,74 @@ namespace EstudianteInscripcionProyecto.UI.Consultas
         {
             Inscripciones inscripciones = new Inscripciones();
             var listado = new List<Inscripciones>();
-            if (CriteriotextBox.Text.Trim().Length > 0)
+            if(FiltrarFechacheckBox.Checked == true)
             {
-                try
+                if (CriteriotextBox.Text.Trim().Length > 0)
                 {
-                    switch (FiltrocomboBox.SelectedIndex)
+                    try
+                    {
+                        switch (FiltrocomboBox.SelectedIndex)
+                        {
+
+                            case 0:
+                                listado = InscripcionesBLL.GetList(p => true);
+                                break;
+                            case 1:
+                                int id = Convert.ToInt32(CriteriotextBox.Text);
+                                listado = InscripcionesBLL.GetList(p => p.InscripcionesId == id);
+                                break;
+                            case 2:
+                                listado = InscripcionesBLL.GetList(p => p.Monto.ToString() == CriteriotextBox.Text);
+                                break;
+                        }
+                    }
+                    catch (Exception)
                     {
 
-                        case 0:
-                            listado = InscripcionesBLL.GetList(p => true);
-                            break;
-                        case 1:
-                            int id = Convert.ToInt32(CriteriotextBox.Text);
-                            listado = InscripcionesBLL.GetList(p => p.InscripcionesId == id);
-                            break;
-                        case 2:
-                            listado = InscripcionesBLL.GetList(p => p.Monto.ToString() == CriteriotextBox.Text);
-                            break;         
                     }
-                }
-                catch (Exception)
-                {
 
                 }
-             
+                else
+                {
+                    listado = InscripcionesBLL.GetList(p => true);
+                }
+                InscripcionesdataGridView.DataSource = null;
+                InscripcionesdataGridView.DataSource = listado;
             }
             else
             {
-                listado = InscripcionesBLL.GetList(p => true);
+                if (CriteriotextBox.Text.Trim().Length > 0)
+                {
+                    try
+                    {
+                        switch (FiltrocomboBox.SelectedIndex)
+                        {
+
+                            case 0:
+                                listado = InscripcionesBLL.GetList(p => true);
+                                break;
+                            case 1:
+                                int id = Convert.ToInt32(CriteriotextBox.Text);
+                                listado = InscripcionesBLL.GetList(p => p.InscripcionesId == id);
+                                break;
+                            case 2:
+                                listado = InscripcionesBLL.GetList(p => p.Monto.ToString() == CriteriotextBox.Text);
+                                break;
+                        }
+                    }
+                    catch (Exception)
+                    {  }
+
+                }
+                else
+                {
+                    listado = InscripcionesBLL.GetList(p => true);
+                }
+                InscripcionesdataGridView.DataSource = null;
+                InscripcionesdataGridView.DataSource = listado;
             }
-            InscripcionesdataGridView.DataSource = null;
-            InscripcionesdataGridView.DataSource = listado;
         }
+
+      }
+           
     }
-}

@@ -31,20 +31,21 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.Agregarbutton = new System.Windows.Forms.Button();
+            this.Buscarbutton = new System.Windows.Forms.Button();
             this.CriteriotextBox = new System.Windows.Forms.TextBox();
             this.FiltrocomboBox = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.HastadateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.DesdedateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.InscripcionesdataGridView = new System.Windows.Forms.DataGridView();
+            this.FiltrarFechacheckBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.InscripcionesdataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(481, 1);
+            this.label7.Location = new System.Drawing.Point(551, 1);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(39, 13);
             this.label7.TabIndex = 33;
@@ -68,19 +69,19 @@
             this.label5.TabIndex = 31;
             this.label5.Text = "Desde";
             // 
-            // Agregarbutton
+            // Buscarbutton
             // 
-            this.Agregarbutton.Location = new System.Drawing.Point(671, 21);
-            this.Agregarbutton.Name = "Agregarbutton";
-            this.Agregarbutton.Size = new System.Drawing.Size(75, 23);
-            this.Agregarbutton.TabIndex = 30;
-            this.Agregarbutton.Text = "Buscar";
-            this.Agregarbutton.UseVisualStyleBackColor = true;
-            this.Agregarbutton.Click += new System.EventHandler(this.Agregarbutton_Click);
+            this.Buscarbutton.Location = new System.Drawing.Point(741, 21);
+            this.Buscarbutton.Name = "Buscarbutton";
+            this.Buscarbutton.Size = new System.Drawing.Size(75, 23);
+            this.Buscarbutton.TabIndex = 30;
+            this.Buscarbutton.Text = "Buscar";
+            this.Buscarbutton.UseVisualStyleBackColor = true;
+            this.Buscarbutton.Click += new System.EventHandler(this.Agregarbutton_Click);
             // 
             // CriteriotextBox
             // 
-            this.CriteriotextBox.Location = new System.Drawing.Point(484, 23);
+            this.CriteriotextBox.Location = new System.Drawing.Point(554, 23);
             this.CriteriotextBox.Name = "CriteriotextBox";
             this.CriteriotextBox.Size = new System.Drawing.Size(150, 20);
             this.CriteriotextBox.TabIndex = 29;
@@ -93,7 +94,7 @@
             "Todos",
             "Id",
             "Monto"});
-            this.FiltrocomboBox.Location = new System.Drawing.Point(310, 23);
+            this.FiltrocomboBox.Location = new System.Drawing.Point(380, 23);
             this.FiltrocomboBox.Name = "FiltrocomboBox";
             this.FiltrocomboBox.Size = new System.Drawing.Size(121, 21);
             this.FiltrocomboBox.TabIndex = 28;
@@ -101,7 +102,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(307, 1);
+            this.label3.Location = new System.Drawing.Point(377, 1);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(29, 13);
             this.label3.TabIndex = 27;
@@ -128,18 +129,29 @@
             this.InscripcionesdataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.InscripcionesdataGridView.Location = new System.Drawing.Point(19, 62);
             this.InscripcionesdataGridView.Name = "InscripcionesdataGridView";
-            this.InscripcionesdataGridView.Size = new System.Drawing.Size(763, 388);
+            this.InscripcionesdataGridView.Size = new System.Drawing.Size(807, 388);
             this.InscripcionesdataGridView.TabIndex = 24;
+            // 
+            // FiltrarFechacheckBox
+            // 
+            this.FiltrarFechacheckBox.AutoSize = true;
+            this.FiltrarFechacheckBox.Location = new System.Drawing.Point(269, 24);
+            this.FiltrarFechacheckBox.Name = "FiltrarFechacheckBox";
+            this.FiltrarFechacheckBox.Size = new System.Drawing.Size(84, 17);
+            this.FiltrarFechacheckBox.TabIndex = 34;
+            this.FiltrarFechacheckBox.Text = "Filtrar Fecha";
+            this.FiltrarFechacheckBox.UseVisualStyleBackColor = true;
             // 
             // InscripcionesConsultaFormularios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(856, 450);
+            this.Controls.Add(this.FiltrarFechacheckBox);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.Agregarbutton);
+            this.Controls.Add(this.Buscarbutton);
             this.Controls.Add(this.CriteriotextBox);
             this.Controls.Add(this.FiltrocomboBox);
             this.Controls.Add(this.label3);
@@ -159,12 +171,13 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button Agregarbutton;
+        private System.Windows.Forms.Button Buscarbutton;
         private System.Windows.Forms.TextBox CriteriotextBox;
         private System.Windows.Forms.ComboBox FiltrocomboBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DateTimePicker HastadateTimePicker;
         private System.Windows.Forms.DateTimePicker DesdedateTimePicker;
         private System.Windows.Forms.DataGridView InscripcionesdataGridView;
+        private System.Windows.Forms.CheckBox FiltrarFechacheckBox;
     }
 }
